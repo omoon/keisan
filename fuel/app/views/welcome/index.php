@@ -1,8 +1,12 @@
 <!DOCTYPE html>
+<?php
+// Viewでセットしないとうまくいかない。なぜ？？
+Config::set('language', Session::get('language'));
+?>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>計算ゲーム</title>
+    <title><?php echo Lang::get('title'); ?></title>
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<style>
 		#logo{
@@ -39,10 +43,6 @@
 			<div id="logo"></div>
 		</div>
 	</div>
-<?php
-// Viewでセットしないとうまくいかない。なぜ？？
-Config::set('language', Session::get('language'));
-?>
 	<div class="container">
 		<div class="hero-unit">
             <h1><?php echo Lang::get('title'); ?></h1>
@@ -75,10 +75,10 @@ Config::set('language', Session::get('language'));
         <?php endif; ?>
 
 		<div class="row">
-			<div class="span4 offset4" style="font-size:18px;text-align:center;">
+			<div class="span4 offset4" style="font-size:24px;font-weight:bold;text-align:center;">
                 <?php echo Form::open('calc'); ?>
                 <?php echo Session::get('value_1'); ?> + <?php echo Session::get('value_2'); ?> =  
-                <?php echo Form::input('answer', '', array('class' => 'span1')); ?>
+                <?php echo Form::input('answer', '', array('class' => 'span1', 'style' => 'font-size:16px;font-weight:bold;')); ?>
             </div>
 		</div>
 		<div class="row">

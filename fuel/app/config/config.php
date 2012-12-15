@@ -16,5 +16,6 @@
  */
 
 return array(
-    'language_fallback' => array('en', 'ja'),
+    'language' => 'ja',
+    'language_fallback' => array('ja'),
 );
