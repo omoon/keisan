@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>FuelPHP Framework</title>
+	<title>計算ゲーム</title>
 	<?php echo Asset::css('bootstrap.css'); ?>
 	<style>
 		#logo{
@@ -39,14 +39,53 @@
 			<div id="logo"></div>
 		</div>
 	</div>
+<?php
+// Viewでセットしないとうまくいかない。なぜ？？
+Config::set('language', Session::get('language'));
+?>
 	<div class="container">
 		<div class="hero-unit">
-			<h1>計算ゲーム</h1>
-            <div>
-<?php echo $value_1; ?> + <?php echo $value_2; ?> =  
-<?php echo Form::input('answer'); ?>
-<a class="btn btn-primary btn-large" href="http://docs.fuelphp.com">答える</a>
-</div>
+            <h1><?php echo Lang::get('title'); ?></h1>
+            <p><?php echo Lang::get('sub_title'); ?></p>
+            <p><a class="btn btn-primary btn-large" href="http://blog.omoon.org"><?php echo Lang::get('about'); ?></a></p>
+
+            <div class="pull-right">
+            <a href="lang/ja">日本語</a> | <a href="lang/en">English</a>
+            </div>
+		</div>
+
+        <?php if ($kekka == 'OK'): ?>
+		<div class="row">
+            <div class="span4 offset4">
+                <p class="alert alert-info">
+                <?php echo Lang::get('correct'); ?>
+                </p>
+            </div>
+		</div>
+        <?php endif; ?>
+
+        <?php if ($kekka == 'NG'): ?>
+		<div class="row">
+            <div class="span4 offset4">
+                <p class="alert alert-danger">
+                <?php echo Lang::get('incorrect'); ?>
+                </p>
+            </div>
+		</div>
+        <?php endif; ?>
+
+		<div class="row">
+			<div class="span4 offset4" style="font-size:18px;text-align:center;">
+                <?php echo Form::open('calc'); ?>
+                <?php echo Session::get('value_1'); ?> + <?php echo Session::get('value_2'); ?> =  
+                <?php echo Form::input('answer', '', array('class' => 'span1')); ?>
+            </div>
+		</div>
+		<div class="row">
+			<div class="span4 offset4" style="text-align:center">
+                <input type="submit" class="span2 btn btn-primary" value="<?php echo Lang::get('submit'); ?>" />
+                <?php echo Form::close(); ?>
+            </div>
 		</div>
 		<hr/>
 		<footer>

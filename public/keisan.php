@@ -4,9 +4,9 @@ $value_2 = rand(1, 10);
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if ($_POST['value_1'] + $_POST['value_2'] == $_POST['answer']) {
-        $kekka = 'ピンポーン！天才です！';
+        $kekka = 'ピンポーン！天才！';
     } else {
-        $kekka = 'ブッブー！アホか！';
+        $kekka = 'ブブー！アホりー！';
     }
 } else {
     $kekka = '';

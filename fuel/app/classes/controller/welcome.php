@@ -12,6 +12,13 @@
 class Controller_Welcome extends Controller
 {
 
+    public function before()
+    {
+        parent::before();
+        Config::set('language', Session::get('language'));
+        Lang::load('app');
+    }
+
 	/**
 	 * The basic welcome message
 	 * 
@@ -20,10 +27,39 @@ class Controller_Welcome extends Controller
 	 */
 	public function action_index()
 	{
-        $data['value_1'] = rand(1, 10);
-        $data['value_2'] = rand(1, 10);
-
+        Session::set('value_1', rand(1, 10));
+        Session::set('value_2', rand(1, 10));
+        $data['kekka'] = Session::get_flash('kekka');
 		return Response::forge(View::forge('welcome/index', $data));
+	}
+
+	/**
+	 * The basic welcome message
+	 * 
+	 * @access  public
+	 * @return  Response
+	 */
+	public function action_calc()
+	{
+        if (Session::get('value_1') + Session::get('value_2') == Input::post('answer')) {
+            Session::set_flash('kekka', 'OK');
+        } else {
+            Session::set_flash('kekka', 'NG');
+        }
+
+		return Response::redirect('/');
+	}
+
+	/**
+	 * The basic welcome message
+	 * 
+	 * @access  public
+	 * @return  Response
+	 */
+	public function action_lang()
+	{
+        Session::set('language', $this->param('lang'));
+		return Response::redirect('/');
 	}
 
 	/**
