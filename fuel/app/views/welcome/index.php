@@ -88,6 +88,7 @@ Config::set('language', Session::get('language'));
             </div>
 		</div>
 		<hr/>
+  <!-- X:S ZenBackWidget --><script type="text/javascript">document.write(unescape("%3Cscript")+" src='http://widget.zenback.jp/?base_uri=http%3A//calc.omoon.org/&nsid=109079484937831824%3A%3A109757959310955435&rand="+Math.ceil((new Date()*1)*Math.random())+"' type='text/javascript'"+unescape("%3E%3C/script%3E"));</script><!-- X:E ZenBackWidget -->
 		<footer>
 			<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
 			<p>
