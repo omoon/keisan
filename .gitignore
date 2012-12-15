@@ -12,5 +12,3 @@ fuel/app/cache/*/*
 build
 nbproject/
 .idea
-
-/fuel/app/config/crypt.php
